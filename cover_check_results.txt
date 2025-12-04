@@ -1,0 +1,26 @@
+
+Url                                                                                                               Status Length 
+---                                                                                                               ------ ------ 
+https://uploads.mangadex.org/covers/184239cd-faf8-4371-9141-09324acea902/b2a2453d-4c7a-4396-a9c5-025363ae4d30.jpg    200 477353 
+https://uploads.mangadex.org/covers/28c77530-dfa1-4b05-8ec3-998960ba24d4/2a87c2b5-83ab-4cfa-96fd-da840f6f0e6f.jpg    200 1379381
+https://uploads.mangadex.org/covers/290c8cbc-d3de-4fca-b7d6-8d72f3beb9b0/38b49a82-ca80-4ce1-9a33-927f5c8bd729.jpg    200 430229 
+https://uploads.mangadex.org/covers/32d76d19-8a05-4db0-9fc2-e0b0648fe9d0/e90bdc47-c8b9-4df7-b2c0-17641b645ee1.jpg    200 317676 
+https://uploads.mangadex.org/covers/53f1ec5e-058b-4d18-a23b-2a7dbca5669f/c60c3924-f73c-4736-a2d3-10e6b8b71049.jpg    200 67172  
+https://uploads.mangadex.org/covers/77807c47-9b81-4da9-a507-50542261e6cc/b9bea346-49a6-4031-af03-90db3df91b34.png    200 363346 
+https://uploads.mangadex.org/covers/77bee52c-d2d6-44ad-a33a-1734c1fe696a/3994ae2b-37b5-4f5c-8ebe-35e3d7c6c959.jpg    200 579516 
+https://uploads.mangadex.org/covers/7f7678c7-0d32-4d36-a99a-1bfe32483584/3c5a285c-1ed3-47c9-a3e1-d4938847c18e.jpg    200 168203 
+https://uploads.mangadex.org/covers/97824518-814b-4bb2-8699-9dc09c7ef555/d9e5c7d1-5d80-4712-bbeb-6270c1601094.png    200 1187748
+https://uploads.mangadex.org/covers/a6dc8243-4452-4272-9f39-d3a250dc51c4/10e24aee-68e9-4441-992a-03765ef841c1.jpg    200 956372 
+https://uploads.mangadex.org/covers/a77742b1-befd-49a4-bff5-1ad4e6b0ef7b/d34fa144-0e6c-4f1a-8bd4-90e91eb5b3cf.jpg    200 278994 
+https://uploads.mangadex.org/covers/aa6c76f7-5f5f-46b6-a800-911145f81b9b/d3e909b9-c667-48a5-beec-ac96f23fa228.jpg    200 181301 
+https://uploads.mangadex.org/covers/b0b721ff-c388-4486-aa0f-c2b0bb321512/0db48a8b-b0a3-4f8d-a1d8-68e3ddcc7f8c.jpg    200 397804 
+https://uploads.mangadex.org/covers/c51bc736-3fee-4f5b-bfdb-1a4e87b01b34/b4b2fc52-506c-4394-97ef-3cc628dbe9cc.jpg    200 5552575
+https://uploads.mangadex.org/covers/d8a959f7-648e-4c8d-8f23-f1f3f8e129f3/fce3cf93-474a-4e96-98b4-cd45a1f09129.jpg    200 893609 
+https://uploads.mangadex.org/covers/dbdffb51-7817-40af-a090-e6c68f42d7e3/c8241361-4116-498d-ab92-98e04434692e.jpg    200 806506 
+https://uploads.mangadex.org/covers/e2a150a1-66a7-4e19-adc5-e0d39f5a6603/b18c2b6c-66c0-4c49-9dbd-6099cec5b40b.png    200 2570975
+https://uploads.mangadex.org/covers/e3f08d56-792c-4600-8576-9debc5eaf162/f0910451-3d92-416a-addf-c98be8ab5a96.jpg    200 58865  
+https://uploads.mangadex.org/covers/e78a489b-6632-4d61-b00b-5206f5b8b22b/cdbc549f-9704-4453-915a-12542583e982.jpg    200 5845966
+https://uploads.mangadex.org/covers/f7f170ed-3819-4952-bd89-2de784fcef11/49e97feb-4366-4d2d-a340-5ad917bda77b.png    200 2988228
+
+
+
