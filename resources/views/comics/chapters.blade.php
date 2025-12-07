@@ -14,10 +14,13 @@
                         {{-- Cover Image --}}
                         <div class="flex-shrink-0">
                             @if(isset($coverUrl) && $coverUrl)
-                                <img src="{{ route('comics.coverProxy') }}?url={{ rawurlencode($coverUrl) }}" 
-                                     alt="{{ $mangaTitle ?? 'Cover' }}" 
-                                     class="w-48 h-72 object-cover rounded-lg shadow-lg border border-gray-200"
-                                     onerror="this.src='https://via.placeholder.com/256x384?text=No+Cover'">
+                                @php
+                                    $proxyCoverUrl = route('comics.coverProxy', ['url' => $coverUrl]);
+                                @endphp
+                                  <img src="{{ $proxyCoverUrl }}" 
+                                      alt="{{ $mangaTitle ?? 'Cover' }}" 
+                                      class="w-48 h-72 object-cover rounded-lg shadow-lg border border-gray-200"
+                                     onerror="this.onerror=null; this.src='{{ asset('images/no-cover.svg') }}'">
                             @else
                                 <div class="w-48 h-72 bg-gray-200 rounded-lg flex items-center justify-center border border-gray-300">
                                     <span class="text-gray-400 text-sm">No Cover</span>

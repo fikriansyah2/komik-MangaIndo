@@ -26,10 +26,13 @@
                                    class="group block">
                                     <div class="border rounded-lg shadow hover:shadow-lg transition-shadow duration-200 overflow-hidden">
                                         @if($coverUrl)
-                                                <img src="{{ route('comics.coverProxy') }}?url={{ rawurlencode($coverUrl . '.256.jpg') }}" 
+                                            @php
+                                                $proxyUrl = route('comics.coverProxy', ['url' => $coverUrl]);
+                                            @endphp
+                                                <img src="{{ $proxyUrl }}" 
                                                  alt="{{ $title }}" 
                                                  class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-200"
-                                                 onerror="this.onerror=null; this.src='https://via.placeholder.com/256x384?text=No+Cover'">
+                                                     onerror="this.onerror=null; this.src='{{ asset('images/no-cover.svg') }}'">
                                         @else
                                             <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
                                                 <span class="text-gray-400 text-sm">No Cover</span>
@@ -101,10 +104,13 @@
                                        class="group block">
                                         <div class="border rounded-lg shadow hover:shadow-lg transition-shadow duration-200 overflow-hidden">
                                             @if($coverUrl)
-                                                <img src="{{ route('comics.coverProxy') }}?url={{ rawurlencode($coverUrl . '.256.jpg') }}" 
+                                                @php
+                                                    $proxyUrl = route('comics.coverProxy', ['url' => $coverUrl]);
+                                                @endphp
+                                                   <img src="{{ $proxyUrl }}" 
                                                      alt="{{ $title }}" 
                                                      class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-200"
-                                                     onerror="this.onerror=null; this.src='https://via.placeholder.com/256x384?text=No+Cover'">
+                                                     onerror="this.onerror=null; this.src='{{ asset('images/no-cover.svg') }}'">
                                             @else
                                                 <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
                                                     <span class="text-gray-400 text-sm">No Cover</span>

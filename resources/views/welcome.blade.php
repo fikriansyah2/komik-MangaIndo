@@ -152,19 +152,21 @@
                             $status = $manga['attributes']['status'] ?? 'ongoing';
                             [$statusClass, $statusText] = $getStatusBadge($status);
                             
-                            // Fallback image jika coverUrl null atau kosong
-                            $finalCoverUrl = $coverUrl ?: 'https://via.placeholder.com/300x400/9CA3AF/FFFFFF?text=No+Cover';
+                            // Fallback image jika coverUrl null atau kosong — gunakan asset lokal
+                            $finalCoverUrl = $coverUrl ?: asset('images/no-cover.svg');
                         @endphp
                         <a href="{{ route('comics.showChapters', ['mangaId' => $manga['id']]) }}" 
                            class="manga-card group block">
                             <article class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl">
                                 <div class="relative aspect-[2/3] overflow-hidden bg-gray-200">
                                     @if($coverUrl)
-                                        <img src="{{ route('comics.coverProxy') }}?url={{ rawurlencode($coverUrl . '.256.jpg') }}" 
+                                        <img src="{{ $coverUrl }}" 
                                              alt="{{ $title }}" 
                                              class="manga-cover w-full h-full object-cover"
                                              loading="lazy"
-                                             onerror="handleCoverError(this)">
+                                             referrerpolicy="no-referrer"
+                                             crossorigin="anonymous"
+                                             onerror="this.onerror=null; this.src='{{ asset('images/no-cover.svg') }}'">
                                     @else
                                         <div class="w-full h-full flex items-center justify-center bg-gray-200">
                                             <span class="text-gray-400 text-xs text-center px-2">No Cover</span>
@@ -267,11 +269,13 @@
                             <article class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl">
                                 <div class="relative aspect-[2/3] overflow-hidden bg-gray-200">
                                     @if($coverUrl)
-                                        <img src="{{ route('comics.coverProxy') }}?url={{ rawurlencode($coverUrl . '.256.jpg') }}" 
-                                             alt="{{ $title }}" 
-                                             class="manga-cover w-full h-full object-cover"
-                                             loading="lazy"
-                                             onerror="handleCoverError(this)">
+                                        <img src="{{ $coverUrl }}" 
+                                            alt="{{ $title }}" 
+                                            class="manga-cover w-full h-full object-cover"
+                                            loading="lazy"
+                                            referrerpolicy="no-referrer"
+                                            crossorigin="anonymous"
+                                            onerror="this.onerror=null; this.src='{{ asset('images/no-cover.svg') }}'">
                                     @else
                                         <div class="w-full h-full flex items-center justify-center bg-gray-200">
                                             <span class="text-gray-400 text-xs text-center px-2">No Cover</span>
@@ -390,40 +394,6 @@
                 });
             });
             @endif
-        </script>
-        <script>
-            // Coba ukuran alternatif ketika gambar cover gagal dimuat
-            function handleCoverError(img) {
-                try {
-                    if (!img || !img.src) return;
-
-                    // Prevent infinite loop
-                    if (img.dataset.triedFallback) {
-                        img.onerror = null;
-                        img.src = 'https://via.placeholder.com/300x400/9CA3AF/FFFFFF?text=No+Cover';
-                        return;
-                    }
-
-                    img.dataset.triedFallback = '1';
-
-                    // Jika URL mengandung ukuran seperti .256.jpg atau .512.jpg, coba ubah ke ukuran alternatif
-                    if (img.src.includes('.256.jpg')) {
-                        img.src = img.src.replace('.256.jpg', '.512.jpg');
-                        return;
-                    }
-
-                    if (img.src.includes('.512.jpg')) {
-                        img.src = img.src.replace('.512.jpg', '.256.jpg');
-                        return;
-                    }
-
-                    // Jika tidak ada suffix ukuran, coba tambahkan .512.jpg
-                    img.src = img.src + '.512.jpg';
-                } catch (e) {
-                    img.onerror = null;
-                    img.src = 'https://via.placeholder.com/300x400/9CA3AF/FFFFFF?text=No+Cover';
-                }
-            }
         </script>
     </body>
 </html>

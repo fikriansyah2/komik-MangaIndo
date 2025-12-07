@@ -240,46 +240,21 @@ class MangadexService
             Log::warning("Cover filename tidak ditemukan untuk Manga ID {$mangaId}, Cover Art ID: {$coverArtId}");
             Log::debug("Relationships count: " . count($relationships));
             Log::debug("Included count: " . count($included ?? []));
-
-            // Fallback: panggil endpoint /cover?manga[]={$mangaId} untuk mencoba mendapatkan fileName
-            try {
-                $resp = Http::timeout(8)->get($this->baseUrl . 'cover', [
-                    'manga[]' => $mangaId,
-                    'limit' => 1,
-                ]);
-                $resp->throw();
-                $respJson = $resp->json();
-                $first = $respJson['data'][0] ?? null;
-                if ($first && isset($first['attributes']['fileName'])) {
-                    $coverFileName = $first['attributes']['fileName'];
-                    Log::info("Cover filename ditemukan via /cover endpoint: {$coverFileName} untuk Manga ID: {$mangaId}");
-                }
-            } catch (RequestException $e) {
-                Log::error("Fallback cover fetch gagal untuk Manga ID {$mangaId}: " . $e->getMessage());
-                if ($e->response) {
-                    Log::debug("Fallback response status: " . $e->response->status());
-                    Log::debug("Fallback response body: " . $e->response->body());
-                }
-            } catch (\Exception $e) {
-                Log::error("Unexpected error saat fallback cover fetch untuk Manga ID {$mangaId}: " . $e->getMessage());
-            }
-
-            if (!$coverFileName) {
-                return null;
-            }
+            return null;
         }
 
         // Build URL sesuai dokumentasi MangaDex
-        // Format yang diharapkan: https://uploads.mangadex.org/covers/:manga-id/:cover-filename.{size}.jpg
-        // Beberapa filename mengandung karakter khusus sehingga harus di-encode
-        $encodedMangaId = rawurlencode((string) $mangaId);
-        $encodedFileName = rawurlencode($coverFileName);
+        // Format: https://uploads.mangadex.org/covers/:manga-id/:cover-filename.{size}.jpg
+        // Penting: filename lengkap dengan extension, lalu tambahkan .{size}.jpg
+        // Contoh: filename.jpg.256.jpg atau filename.png.512.jpg
+        $baseUrl = 'https://uploads.mangadex.org/covers/' . $mangaId . '/' . $coverFileName;
+        
+        // Jika size diberikan, tambahkan .{size}.jpg setelah extension
+        if ($size && in_array($size, ['256', '512'])) {
+            $baseUrl .= '.' . $size . '.jpg';
+        }
 
-        // Kembalikan URL dasar (tanpa suffix ukuran). View/JS akan menambahkan
-        // suffix `.256.jpg` atau `.512.jpg` bila ingin thumbnail.
-        $baseUrl = 'https://uploads.mangadex.org/covers/' . $encodedMangaId . '/' . $encodedFileName;
-
-        Log::debug("Cover base URL generated untuk Manga ID {$mangaId}: {$baseUrl}");
+        Log::debug("Cover URL generated untuk Manga ID {$mangaId}: {$baseUrl}");
         return $baseUrl;
     }
     
